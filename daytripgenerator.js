@@ -13,39 +13,9 @@ let selectedDestination;
 selectedDestination = randomDestinationGenerator(randomDestinations);
 console.log("Destination:  " + selectedDestination);
 
-
-
-
-if (selectedDestination == "Japan"){
-    restaurant = ["Tokyo Washoku Ichi", "Gyopao Gyoza Rappongi", "Ise Sueyoshi", "Han no Daidokoro Honten"]
-
-}else if (selectedDestination == "England"){
-    restaurant = ["Scarlett Green", "Alexander The Great", "Grand Trunk Road", "The Ledbury"]
-}else if (selectedDestination == "Bahamas"){
-    restaurant = ["Robinson's Seafood Delight", "Daddy Brown's Conch Stand", "Flying Fish GastroBar", "Marco's"]
-}else if (selectedDestination == "Hawaii"){
-    restaurant = ["Maguro Spot", "Paia Fish Market", "Champs Sports Bar & Restaurant", "La Mer"]
-}else if (selectedDestination == "Egypt"){
-    restaurant = ["Restaurant El Dar Darak", "The Moghul Room", "Pyramids Restaurant", "Felfela"]
-}
-/// ----------- ENTERTAINMENT -----  Will BE SELECTED DEPENDING ON LOCATION BELOW----
-
-if (selectedDestination == "Japan"){
-    entertainment = ["Watch Sumo Wrestling Tournament", "Go to Comicon event", "See famous and ancient sites"]
-}else if (selectedDestination == "England"){
-    entertainment = ["Visit famous sites and architecture", "Gamble on horse races", "Visit Monkey Forest Trentham"]
-}else if (selectedDestination == "Bahamas"){
-    entertainment = ["Enjoy a day at the beach", "Visit popular tourist sites", "Go bar hopping"]
-}else if (selectedDestination == "Hawaii"){
-    entertainment = ["Visit Pearl Harbor Museum", "Enjoy a day at the beach.", "Visit Dole Pinnapple Factory"]
-}else if (selectedDestination == "Egypt"){
-    entertainment = ["Visit the Pyramids", "Take a group tour", "Visit a Museum"]
-}
-
-
 /// NOW BELOW THIS A RANDOM RESTAURANT CAN BE SELECTED_______
 
-let selectedRestaurant = randomRestaurantGenenrator(restaurant);
+let selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
 console.log("Restaurant: " + selectedRestaurant);
 
 ///_______BELOW THIS THE MODE OF TRANSPORTATION WILL BE DETERMINED____
@@ -55,7 +25,7 @@ console.log("Transportation:  " + selectedModeOfTransportation);
 
 ///____ BELOW THIS THE CHOICE OF ~~~ENTERTAINMENT~~~ WILL BE SELECTED
 
-let selectedEntertainment = randomEntertainmentGenerator(entertainment);
+let selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
 console.log("Entertainment: "+ selectedEntertainment);
 //// __________________________________________________________________
 /////*****************************************************
@@ -109,8 +79,8 @@ function changeTripDetails (change){
         console.log("\n ***A new restaurant and entertainment must be randomly selected because\n the one chosen before" +
         " was only available at that destination");
         selectedDestination = randomDestinationGenerator(randomDestinations);
-        selectedRestaurant = randomRestaurantGenenrator(restaurant);
-        selectedEntertainment = randomEntertainmentGenerator(entertainment);
+        selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
+        selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
         console.log("\n" + "\n Destination has been changed to " + selectedDestination)
         console.log("Destination: " + selectedDestination + "\n" +
         "Restaurant: " + selectedRestaurant + "\n" +
@@ -120,7 +90,7 @@ function changeTripDetails (change){
     }
     if (change == "b"){
         console.clear();
-        selectedRestaurant = randomRestaurantGenenrator(restaurant);
+        selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
         console.log("Destination: " + selectedDestination + "\n" +
         "Restaurant: " + selectedRestaurant + "\n" +
         "Transportation: " + selectedModeOfTransportation + "\n" +
@@ -137,7 +107,7 @@ function changeTripDetails (change){
     }
     if (change == "d"){
         console.clear();
-        selectedEntertainment = randomEntertainmentGenerator(entertainment);
+        selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
         console.log("Destination: " + selectedDestination + "\n" +
         "Restaurant: " + selectedRestaurant + "\n" +
         "Transportation: " + selectedModeOfTransportation + "\n" +
@@ -179,7 +149,7 @@ function randomDestinationGenerator(arrayOfDestinations){
 ////------------------------------------------------------------------------------
 /// THE FUNCTION BELOW RANDOLY ~GENERATES A RESTAURANT~ BASED ON LOCATION ____________
 
-function randomRestaurantGenenrator(){
+function randomRestaurantGenenrator(selectedDestination){
     if (selectedDestination == "Japan"){
         restaurant = ["Tokyo Washoku Ichi", "Gyopao Gyoza Rappongi", "Ise Sueyoshi", "Han no Daidokoro Honten"]
     
@@ -209,7 +179,7 @@ function randomModeOfTransportationGenerator(arrayOfModesOfTransportation){
 ////-------------------------------------------------------------------------------
 //// THE FUNCTION BELOW WILL RANDOMLY GENERATE A FORM OF ~~ENTERTAINMENT~~ WHILE ON DAYTRIP--
 
-function randomEntertainmentGenerator(){
+function randomEntertainmentGenerator(selectedDestination){
     if (selectedDestination == "Japan"){
         entertainment = ["Watch Sumo Wrestling Tournament", "Go to Comicon event", "See famous and ancient sites"]
     }else if (selectedDestination == "England"){
