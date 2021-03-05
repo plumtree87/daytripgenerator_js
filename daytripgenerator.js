@@ -5,39 +5,20 @@ let destination;
 let restaurant;
 let modesOfTransportation = ["Taxi", "Uber", "Car Rental"]
 let entertainment;
-let selectedDestination;
+let selectedDestination = "Japan";
+let selectedRestaurant = "Gyopao Gyoza Rappong";
+let selectedEntertainment = "See famous and ancient sites";
+let selectedModeOfTransportation = "Taxi";
 
-/// Below will First choose a Destionation, then based on the destionation, it will determine what 
-/// options are available for restaraunts ....
 
-selectedDestination = randomDestinationGenerator(randomDestinations);
-console.log("Destination:  " + selectedDestination);
+////// EVERYTHING BELOW IS THE PROGRAM-ISH-LIKE-THING ////// ---------------------
 
-/// NOW BELOW THIS A RANDOM RESTAURANT CAN BE SELECTED_______
-
-let selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
-console.log("Restaurant: " + selectedRestaurant);
-
-///_______BELOW THIS THE MODE OF TRANSPORTATION WILL BE DETERMINED____
-
-let selectedModeOfTransportation = randomModeOfTransportationGenerator(modesOfTransportation);
-console.log("Transportation:  " + selectedModeOfTransportation);
-
-///____ BELOW THIS THE CHOICE OF ~~~ENTERTAINMENT~~~ WILL BE SELECTED
-
-let selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
-console.log("Entertainment: "+ selectedEntertainment);
-//// __________________________________________________________________
-/////*****************************************************
-////***************************************************** */ */
-//// EVERYTHING IN THESE BRACKETS IS BASICALLY MY PROGRAM-ISH-LIKE THING
-
-console.log("\n This trip has been randomly generated.\n" + " If you would like to change anything;\n "
+console.log("\n This trip has been\n randomly generated.\n" + " If you would like to change anything;\n "
 + "Please choose one selection at a time when prompted");
 
 
-let changeYorN = prompt("Are you satisfied with this day trip? If yes press y \n" +
-"press any other key to make changes" +
+let changeYorN = prompt("Are you satisfied with this day trip? If yes press (y) \n" +
+"press (any other key) to make changes" +
 "\n" + "Destination: " + selectedDestination + "\n" +
 "Restaurant: " + selectedRestaurant + "\n" +
 "Transportation: " + selectedModeOfTransportation + "\n" +
@@ -49,7 +30,7 @@ while (changeYorN != "y") {
     let answer = qprompt();
     if (answer == "e") {
         prompt("***CONGRATULATIONS!*** HERE IS YOUR TRIP CONFIRMATION:"+ 
-        "Destination: " + selectedDestination + "\n" +
+        "\n" + "Destination: " + selectedDestination + "\n" +
         "Restaurant: " + selectedRestaurant + "\n" +
         "Transportation: " + selectedModeOfTransportation + "\n" +
         "Entertainment: " + selectedEntertainment + "\n" 
@@ -57,11 +38,7 @@ while (changeYorN != "y") {
         break;
     }
     changeTripDetails(answer);
-    changeYorN = prompt("press y if satisfied or press any key to make more changes" + 
-    "\n" + "Destination: " + selectedDestination + "\n" +
-    "Restaurant: " + selectedRestaurant + "\n" +
-    "Transportation: " + selectedModeOfTransportation + "\n" +
-    "Entertainment: " + selectedEntertainment + "\n" );
+
 }
 console.clear();
 logTrip();
@@ -69,58 +46,19 @@ console.log("CONGRATTTTTTSSSSS WOOOOOO \n" +
 "CONFIRMED!!!!\n"+
 "YOUR CONFIRMATION CODE IS 4F3A2K4E1" );
 
-function changeTripDetails (change){
-
-    if (change == "a"){
-        console.clear();
-        console.log("\n ***A new restaurant and entertainment must be randomly selected because\n the one chosen before" +
-        " was only available at that destination");
-        selectedDestination = randomDestinationGenerator(randomDestinations);
-        selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
-        selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
-        console.log("\n" + "\n Destination has been changed to " + selectedDestination)
-       logTrip();
-        
-    }
-    if (change == "b"){
-        console.clear();
-        selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
-       logTrip();
-    }
-    if (change == "c"){
-        console.clear();
-        selectedModeOfTransportation = randomModeOfTransportationGenerator(modesOfTransportation);
-        logTrip();
-
-    }
-    if (change == "d"){
-        console.clear();
-        selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
-        logTrip();
-    }
-    if (change == "e"){
-        console.clear();
-        console.log("Alright, this will be your day trip!");
-        logTrip();
-
-    }
-    
-}
-
-
-
+/// END
+////////////////////////// COMPLETE
+//////////////////////////////////////EVERYTHING BELOW ARE FUNCTIONS-------------------
 ///// EVERYTHING ABOVE IS BASICALLY MY PROGRAMISH-LIKE THING ---------------------------
-
-
-
-
-
-
 //~~~~~~~~~~~~~~ FUNCTIONS BELOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //// THIS FUNCTION RANDOMLY ~GENERATES A DESTIONATION~ FOR VACATION __________________
 function randomDestinationGenerator(arrayOfDestinations){
     let aDestination = arrayOfDestinations[Math.floor(Math.random() * 5)]
+    while (aDestination == selectedDestination){
+        aDestination = arrayOfDestinations[Math.floor(Math.random() * 5)]
+       
+    }
     return aDestination;
 
 }
@@ -128,7 +66,9 @@ function randomDestinationGenerator(arrayOfDestinations){
 ////------------------------------------------------------------------------------
 /// THE FUNCTION BELOW RANDOLY ~GENERATES A RESTAURANT~ BASED ON LOCATION ____________
 
-function randomRestaurantGenenrator(selectedDestination){
+function randomRestaurantGenerator(selectedDestination){
+   
+
     if (selectedDestination == "Japan"){
         restaurant = ["Tokyo Washoku Ichi", "Gyopao Gyoza Rappongi", "Ise Sueyoshi", "Han no Daidokoro Honten"]
     
@@ -141,16 +81,26 @@ function randomRestaurantGenenrator(selectedDestination){
     }else if (selectedDestination == "Egypt"){
         restaurant = ["Restaurant El Dar Darak", "The Moghul Room", "Pyramids Restaurant", "Felfela"]
     }
+    
     let aRestaurant = restaurant[Math.floor(Math.random() * 4)]
+    while (aRestaurant == selectedRestaurant){
+        aRestaurant = restaurant[Math.floor(Math.random() * 4)]
+       
+    }
     return aRestaurant;
 
 }
+
+
 //// THE FUNCTION ABOVE RANDOMLY ~GENERATES A RESTAURANT~ BASED ON LOCATION __________
 ////-----------------------------------------------------------------------------_
 //// THE FUNCTION BELOW WILL RANDOMLY GENERATE ~A MODE OF TRANSPORTATION~ WHILE ON DAY TRIP---
 
 function randomModeOfTransportationGenerator(arrayOfModesOfTransportation){
     let mode = arrayOfModesOfTransportation[Math.floor(Math.random() * 3)]
+    while (mode == selectedModeOfTransportation){
+        mode = arrayOfModesOfTransportation[Math.floor(Math.random() * 3)]
+    }
     return mode;
 }
 
@@ -171,6 +121,10 @@ function randomEntertainmentGenerator(selectedDestination){
         entertainment = ["Visit the Pyramids", "Take a group tour", "Visit a Museum"]
     }
     let event = entertainment[Math.floor(Math.random() * 3)]
+    while (event == selectedEntertainment){
+        event = entertainment[Math.floor(Math.random() * 3)]
+       
+    }
     return event;
 }
 
@@ -194,4 +148,44 @@ function logTrip(){
     "Restaurant: " + selectedRestaurant + "\n" +
     "Transportation: " + selectedModeOfTransportation + "\n" +
     "Entertainment: " + selectedEntertainment + "\n" );
+}
+
+/// BIG FUNCTION 
+
+function changeTripDetails (change){
+
+    if (change == "a"){
+        console.clear();
+        console.log("\n ***A new restaurant and entertainment must be randomly selected because\n the one chosen before" +
+        " was only available at that destination");
+        selectedDestination = randomDestinationGenerator(randomDestinations);
+        selectedRestaurant = randomRestaurantGenerator(selectedDestination);
+        selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
+        console.log("\n" + "\n Destination has been changed to " + selectedDestination)
+       logTrip();
+        
+    }
+    if (change == "b"){
+        console.clear();
+        selectedRestaurant = randomRestaurantGenerator(selectedDestination);
+       logTrip();
+    }
+    if (change == "c"){
+        console.clear();
+        selectedModeOfTransportation = randomModeOfTransportationGenerator(modesOfTransportation);
+        logTrip();
+
+    }
+    if (change == "d"){
+        console.clear();
+        selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
+        logTrip();
+    }
+    if (change == "e"){
+        console.clear();
+        console.log("Alright, this will be your day trip!");
+        logTrip();
+
+    }
+    
 }
