@@ -58,8 +58,9 @@ console.log("Transportation:  " + selectedModeOfTransportation);
 let selectedEntertainment = randomEntertainmentGenerator(entertainment);
 console.log("Entertainment: "+ selectedEntertainment);
 //// __________________________________________________________________
-
-
+/////*****************************************************
+////***************************************************** */ */
+//// EVERYTHING IN THESE BRACKETS IS BASICALLY MY PROGRAM-ISH-LIKE THING
 
 console.log("\n This trip has been randomly generated.\n" + " If you would like to change anything;\n "
 + "Please choose one selection at a time when prompted");
@@ -71,21 +72,35 @@ let changeYorN = prompt("Are you satisfied with this day trip? If yes press y \n
 "Restaurant: " + selectedRestaurant + "\n" +
 "Transportation: " + selectedModeOfTransportation + "\n" +
 "Entertainment: " + selectedEntertainment + "\n" +
-"\n" + "***NOTICE*** If you change destination, entertainment and restaurant options also must change due to location")
+"\n" + "***NOTICE*** If you change destination, entertainment and restaurant options also must change due to location"+
+"\n" + "ALSO, due to this being randomly generated, it may take a few attempts to actually change something.")
 
 while (changeYorN != "y") { 
     let answer = qprompt();
     if (answer == "e") {
+        prompt("***CONGRATULATIONS!*** HERE IS YOUR TRIP CONFIRMATION:"+ 
+        "Destination: " + selectedDestination + "\n" +
+        "Restaurant: " + selectedRestaurant + "\n" +
+        "Transportation: " + selectedModeOfTransportation + "\n" +
+        "Entertainment: " + selectedEntertainment + "\n" 
+        +"PRESS ANY KEY TO ACCEPT THIS CONFIRMATION");
         break;
     }
     changeTripDetails(answer);
-    changeYorN = prompt("press y if satisfied or press n to make more changes" + 
+    changeYorN = prompt("press y if satisfied or press any key to make more changes" + 
     "\n" + "Destination: " + selectedDestination + "\n" +
     "Restaurant: " + selectedRestaurant + "\n" +
     "Transportation: " + selectedModeOfTransportation + "\n" +
     "Entertainment: " + selectedEntertainment + "\n" );
 }
-
+console.clear();
+console.log("CONGRATTTTTTSSSSS WOOOOOO \n" + 
+"CONFIRMED!!!!\n"+
+"Destination: " + selectedDestination + "\n" +
+    "Restaurant: " + selectedRestaurant + "\n" +
+    "Transportation: " + selectedModeOfTransportation + "\n" +
+    "Entertainment: " + selectedEntertainment + "\n"
++"YOUR CONFIRMATION CODE IS 4F3A2K4E1" );
 
 function changeTripDetails (change){
 
@@ -145,6 +160,14 @@ function changeTripDetails (change){
 
 
 
+///// EVERYTHING ABOVE IS BASICALLY MY PROGRAMISH-LIKE THING ---------------------------
+
+
+
+
+
+
+//~~~~~~~~~~~~~~ FUNCTIONS BELOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //// THIS FUNCTION RANDOMLY ~GENERATES A DESTIONATION~ FOR VACATION __________________
 function randomDestinationGenerator(arrayOfDestinations){
@@ -156,7 +179,7 @@ function randomDestinationGenerator(arrayOfDestinations){
 ////------------------------------------------------------------------------------
 /// THE FUNCTION BELOW RANDOLY ~GENERATES A RESTAURANT~ BASED ON LOCATION ____________
 
-function randomRestaurantGenenrator(arrayOfRestaurants){
+function randomRestaurantGenenrator(){
     if (selectedDestination == "Japan"){
         restaurant = ["Tokyo Washoku Ichi", "Gyopao Gyoza Rappongi", "Ise Sueyoshi", "Han no Daidokoro Honten"]
     
@@ -169,7 +192,7 @@ function randomRestaurantGenenrator(arrayOfRestaurants){
     }else if (selectedDestination == "Egypt"){
         restaurant = ["Restaurant El Dar Darak", "The Moghul Room", "Pyramids Restaurant", "Felfela"]
     }
-    let aRestaurant = restaurant[Math.floor(Math.random() * 5 -1)]
+    let aRestaurant = restaurant[Math.floor(Math.random() * 4)]
     return aRestaurant;
 
 }
@@ -186,7 +209,7 @@ function randomModeOfTransportationGenerator(arrayOfModesOfTransportation){
 ////-------------------------------------------------------------------------------
 //// THE FUNCTION BELOW WILL RANDOMLY GENERATE A FORM OF ~~ENTERTAINMENT~~ WHILE ON DAYTRIP--
 
-function randomEntertainmentGenerator(arrayOfEntertainment){
+function randomEntertainmentGenerator(){
     if (selectedDestination == "Japan"){
         entertainment = ["Watch Sumo Wrestling Tournament", "Go to Comicon event", "See famous and ancient sites"]
     }else if (selectedDestination == "England"){
