@@ -64,13 +64,10 @@ while (changeYorN != "y") {
     "Entertainment: " + selectedEntertainment + "\n" );
 }
 console.clear();
+logTrip();
 console.log("CONGRATTTTTTSSSSS WOOOOOO \n" + 
 "CONFIRMED!!!!\n"+
-"Destination: " + selectedDestination + "\n" +
-    "Restaurant: " + selectedRestaurant + "\n" +
-    "Transportation: " + selectedModeOfTransportation + "\n" +
-    "Entertainment: " + selectedEntertainment + "\n"
-+"YOUR CONFIRMATION CODE IS 4F3A2K4E1" );
+"YOUR CONFIRMATION CODE IS 4F3A2K4E1" );
 
 function changeTripDetails (change){
 
@@ -82,48 +79,30 @@ function changeTripDetails (change){
         selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
         selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
         console.log("\n" + "\n Destination has been changed to " + selectedDestination)
-        console.log("Destination: " + selectedDestination + "\n" +
-        "Restaurant: " + selectedRestaurant + "\n" +
-        "Transportation: " + selectedModeOfTransportation + "\n" +
-        "Entertainment: " + selectedEntertainment + "\n" );
+       logTrip();
         
     }
     if (change == "b"){
         console.clear();
         selectedRestaurant = randomRestaurantGenenrator(selectedDestination);
-        console.log("Destination: " + selectedDestination + "\n" +
-        "Restaurant: " + selectedRestaurant + "\n" +
-        "Transportation: " + selectedModeOfTransportation + "\n" +
-        "Entertainment: " + selectedEntertainment + "\n" );
+       logTrip();
     }
     if (change == "c"){
         console.clear();
         selectedModeOfTransportation = randomModeOfTransportationGenerator(modesOfTransportation);
-        console.log("Destination: " + selectedDestination + "\n" +
-        "Restaurant: " + selectedRestaurant + "\n" +
-        "Transportation: " + selectedModeOfTransportation + "\n" +
-        "Entertainment: " + selectedEntertainment + "\n" );
+        logTrip();
 
     }
     if (change == "d"){
         console.clear();
         selectedEntertainment = randomEntertainmentGenerator(selectedDestination);
-        console.log("Destination: " + selectedDestination + "\n" +
-        "Restaurant: " + selectedRestaurant + "\n" +
-        "Transportation: " + selectedModeOfTransportation + "\n" +
-        "Entertainment: " + selectedEntertainment + "\n" );
+        logTrip();
     }
     if (change == "e"){
         console.clear();
         console.log("Alright, this will be your day trip!");
-        console.log("Destination: " + selectedDestination + "\n" +
-        "Restaurant: " + selectedRestaurant + "\n" +
-        "Transportation: " + selectedModeOfTransportation + "\n" +
-        "Entertainment: " + selectedEntertainment + "\n" );
-        document.write("Destination: " + selectedDestination + "\n" +
-        "Restaurant: " + selectedRestaurant + "\n" +
-        "Transportation: " + selectedModeOfTransportation + "\n" +
-        "Entertainment: " + selectedEntertainment + "\n" );
+        logTrip();
+
     }
     
 }
@@ -206,4 +185,13 @@ function qprompt(){
     " Press (d)  (If you would like to change your form of Entertainment)"+selectedEntertainment+"\n" +
     " Press (e)  (If you are satisfied with this randomly generated day trip!");
     return question;
+}
+
+/////  REPEATED MESSAGE SENDING TRIP DETAILS TO CONSOLE.LOG BELOW ______
+
+function logTrip(){
+    console.log("Destination: " + selectedDestination + "\n" +
+    "Restaurant: " + selectedRestaurant + "\n" +
+    "Transportation: " + selectedModeOfTransportation + "\n" +
+    "Entertainment: " + selectedEntertainment + "\n" );
 }
