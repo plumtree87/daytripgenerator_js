@@ -9,6 +9,8 @@ let selectedDestination = "Japan";
 let selectedRestaurant = "Gyopao Gyoza Rappong";
 let selectedEntertainment = "See famous and ancient sites";
 let selectedModeOfTransportation = "Taxi";
+let usedCodes = [];
+let confirmationCode = codeGenerator();
 
 
 ////// EVERYTHING BELOW IS THE PROGRAM-ISH-LIKE-THING ////// ---------------------
@@ -17,8 +19,7 @@ console.log("\n This trip has been randomly generated.\n" + " If you would like 
 + "Please choose one selection at a time when prompted");
 
 
-let changeYorN = prompt("Are you satisfied with this day trip? If yes press (y) \n" +
-"press (any other key) to make changes" +
+let changeYorN = prompt("Are you satisfied with this trip? If yes press (y) and (anykey) if no\n"+
 "\n" + "Destination: " + selectedDestination + "\n" +
 "Restaurant: " + selectedRestaurant + "\n" +
 "Transportation: " + selectedModeOfTransportation + "\n" +
@@ -28,13 +29,16 @@ let changeYorN = prompt("Are you satisfied with this day trip? If yes press (y) 
 while (changeYorN != "y") { 
     let answer = qprompt();
     if (answer == "e") {
-        prompt("***CONGRATULATIONS!*** HERE IS YOUR TRIP CONFIRMATION:"+ 
+        let input = confirm("***CONGRATULATIONS!*** HERE IS YOUR TRIP CONFIRMATION:"+ 
         "\n" + "Destination: " + selectedDestination + "\n" +
         "Restaurant: " + selectedRestaurant + "\n" +
         "Transportation: " + selectedModeOfTransportation + "\n" +
         "Entertainment: " + selectedEntertainment + "\n" 
-        +"PRESS ANY KEY TO ACCEPT THIS CONFIRMATION");
-        break;
+        +"PRESS ENTER TO ACCEPT THIS CONFIRMATION\n" +"\n *NOTE if you Cancel, you will need to press (anykey) before changes can be made.");
+        if (input == true){
+             break; 
+        }else qprompt();
+       
     }
     changeTripDetails(answer);
 
@@ -43,7 +47,7 @@ console.clear();
 logTrip();
 console.log("CONGRATTTTTTSSSSS WOOOOOO \n" + 
 "CONFIRMED!!!!\n"+
-"YOUR CONFIRMATION CODE IS 4F3A2K4E1" );
+"YOUR CONFIRMATION CODE IS fAke"+ confirmationCode);
 
 /// END
 ////////////////////////// COMPLETE
@@ -137,11 +141,11 @@ function randomEntertainmentGenerator(selectedDestination){
 function qprompt(){
     let question = prompt("Press the [letter] associated with the one you'd like to change\n"+
     "***NOTE*** If you change [a]Destination then restaurant and entertainment also must change based on location.\n"+
-    "\n [a]"+selectedDestination+ 
-    "\n " +"[b]"+selectedRestaurant+ 
-    "\n "+"[c]"+selectedModeOfTransportation +
-    "\n "+"[d]"+selectedEntertainment +
-    "\n [e]  If you are satisfied with this randomly generated day trip!\n");
+    "\n [a] "+selectedDestination+ 
+    "\n " +"[b] "+selectedRestaurant+ 
+    "\n "+"[c] "+selectedModeOfTransportation +
+    "\n "+"[d] "+selectedEntertainment +
+    "\n [e] If you are satisfied with this randomly generated day trip!\n");
     return question;
 }
 
@@ -193,3 +197,17 @@ function changeTripDetails (change){
     }
     
 }
+
+/////---------------------- going to try to make a confirmation code generator....
+
+
+function codeGenerator(){
+    let generatedCode = Math.floor(Math.random()*5)
+    while (usedCodes.includes(generatedCode)){
+        generatedCode = Math.floor(Math.random()*5)
+    }
+    usedCodes.push(generatedCode);
+    return generatedCode;
+}
+
+///// ***NOTE  :   This above function does not work or do what I want it to do, and I gave up trying to figure it out.
