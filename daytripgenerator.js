@@ -13,7 +13,7 @@ let selectedModeOfTransportation = "Taxi";
 
 ////// EVERYTHING BELOW IS THE PROGRAM-ISH-LIKE-THING ////// ---------------------
 
-console.log("\n This trip has been\n randomly generated.\n" + " If you would like to change anything;\n "
+console.log("\n This trip has been randomly generated.\n" + " If you would like to change anything;\n "
 + "Please choose one selection at a time when prompted");
 
 
@@ -23,8 +23,7 @@ let changeYorN = prompt("Are you satisfied with this day trip? If yes press (y) 
 "Restaurant: " + selectedRestaurant + "\n" +
 "Transportation: " + selectedModeOfTransportation + "\n" +
 "Entertainment: " + selectedEntertainment + "\n" +
-"\n" + "***NOTICE*** If you change destination, entertainment and restaurant options also must change due to location"+
-"\n" + "ALSO, due to this being randomly generated, it may take a few attempts to actually change something.")
+"\n" + "***NOTICE*** If you change destination, entertainment and restaurant options also must change due to location")
 
 while (changeYorN != "y") { 
     let answer = qprompt();
@@ -48,11 +47,14 @@ console.log("CONGRATTTTTTSSSSS WOOOOOO \n" +
 
 /// END
 ////////////////////////// COMPLETE
-//////////////////////////////////////EVERYTHING BELOW ARE FUNCTIONS-------------------
 ///// EVERYTHING ABOVE IS BASICALLY MY PROGRAMISH-LIKE THING ---------------------------
+////////////////////////////////////////////////////////////////--EVERYTHING BELOW ARE FUNCTIONS-------------------
 //~~~~~~~~~~~~~~ FUNCTIONS BELOW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+///*** NOTE ***    the randomGeneration function(s) will -not- generate the exact same thing twice in a row, due to their
+/// while loops.
 
 //// THIS FUNCTION RANDOMLY ~GENERATES A DESTIONATION~ FOR VACATION __________________
+
 function randomDestinationGenerator(arrayOfDestinations){
     let aDestination = arrayOfDestinations[Math.floor(Math.random() * 5)]
     while (aDestination == selectedDestination){
@@ -133,11 +135,13 @@ function randomEntertainmentGenerator(selectedDestination){
 //// ~~~ this function will give me a **Prompt** for selecting to change trip details below---
 
 function qprompt(){
-    let question = prompt("Press (a)  (If you would like to change your destination) " +selectedDestination+ "\n" + 
-    " Press (b)  (If you would like to change your Restaurant) " +selectedRestaurant+ "\n" + 
-    " Press (c)  (If you would like to change your mode of Transportation) "+selectedModeOfTransportation +"\n" +
-    " Press (d)  (If you would like to change your form of Entertainment)"+selectedEntertainment+"\n" +
-    " Press (e)  (If you are satisfied with this randomly generated day trip!");
+    let question = prompt("Press the [letter] associated with the one you'd like to change\n"+
+    "***NOTE*** If you change [a]Destination then restaurant and entertainment also must change based on location.\n"+
+    "\n [a]"+selectedDestination+ 
+    "\n " +"[b]"+selectedRestaurant+ 
+    "\n "+"[c]"+selectedModeOfTransportation +
+    "\n "+"[d]"+selectedEntertainment +
+    "\n [e]  If you are satisfied with this randomly generated day trip!\n");
     return question;
 }
 
